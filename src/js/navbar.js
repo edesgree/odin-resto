@@ -23,9 +23,9 @@ function render() {
         // })
 
     })
-return $tabs;
+    return $tabs;
 
-    
+
 }
 
 export { render as renderNav }
