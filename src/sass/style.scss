@@ -1,5 +1,5 @@
 /*Odin Resto CSS*/
-@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lato:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lato:wght@400;700&display=swap");
 //VARS
 $containerWidth: min(100% - 2rem, 60rem);
 $assetsPath: "../images/";
@@ -13,8 +13,8 @@ $dark: #323031;
 $greydark: #0c1e24;
 $greylight: #e2e8f0;
 $greylight2: #eff2f7;
-$font-text: 'Lato', sans-serif;;
-$font-logo: 'Berkshire Swash', cursive;
+$font-text: "Lato", sans-serif;
+$font-logo: "Berkshire Swash", cursive;
 $border-radius: 6px;
 @debug $font-logo;
 body {
@@ -59,9 +59,10 @@ h3,
 h4,
 h5,
 h6 {
+    font-family: $font-logo;
     font-weight: bold;
 }
-ul{
+ul {
     list-style-type: none;
     padding-left: 0;
 }
@@ -81,12 +82,11 @@ header {
     margin-bottom: 20px;
     padding: 10px;
     .logo {
-        background: url('#{$assetsPath}logo.svg') no-repeat center left;
-        color:orange;
-        font-family:$font-logo;
-        font-size:2em;
-        padding-left: 50px
-        
+        background: url("#{$assetsPath}logo.svg") no-repeat center left;
+        color: orange;
+        font-family: $font-logo;
+        font-size: 2em;
+        padding-left: 50px;
     }
     .tabs {
         align-items: center;
@@ -94,26 +94,53 @@ header {
         gap: 10px;
     }
 }
-main {
+main#home {
     flex: 1;
     .hero {
         display: flex;
         font-size: 1.5em;
         gap: 20px;
-        img{
+        img {
             align-self: start;
         }
     }
-    .column-2-3 {
-        display: flex;
-        gap: 20px;
-        & > div:first-of-type {
-            flex: 1;
-        }
-        & > div:last-child {
-            flex: 2;
+}
+.column-2-3 {
+    display: flex;
+    gap: 20px;
+    & > div:first-of-type {
+        flex: 1;
+    }
+    & > div:last-child {
+        flex: 2;
+    }
+}
+// menu
+main#menu {
+    .articles {
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        article {
+            background-color: $greylight2;
+            border-left: solid 5px $bright;
+            border-radius: 6px;
+            box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+            color: $dark;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 1.25rem;
+            .media {
+                img {
+                }
+                .info {
+                }
+            }
         }
     }
+
+
 }
 
 footer {
