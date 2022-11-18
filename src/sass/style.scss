@@ -5,7 +5,7 @@ $containerWidth: min(100% - 2rem, 60rem);
 $assetsPath: "../images/";
 
 $bright: #a9ff77;
-$bright2: #fe6d73;
+$bright2: #e3871d;
 $main: #227c9d;
 $main2: #ff433f;
 $light: #fef9ef;
@@ -92,12 +92,12 @@ header {
         align-items: center;
         display: flex;
         gap: 10px;
-        .tab{
-            &:hover{
-                color:$bright2;
-                cursor:pointer;
+        .tab {
+            &:hover {
+                color: $bright2;
+                cursor: pointer;
             }
-            &.active{
+            &.active {
                 text-decoration: underline;
             }
         }
@@ -143,6 +143,25 @@ header {
             flex-direction: column;
             gap: 20px;
             padding: 1.25rem;
+            position: relative;
+            h3 {
+                margin: 0;
+            }
+            .description p {
+                margin-top: 0;
+            }
+            .price {
+                background-color: $bright2;
+                border-radius: 80px;
+                font-size: 1.2em;
+                font-weight: normal;
+                margin: 0;
+                padding: 12px 10px;
+                position: absolute;
+                right: 10px;
+                top: 40px;
+                
+            }
             .media {
                 img {
                 }
@@ -151,8 +170,6 @@ header {
             }
         }
     }
-
-
 }
 
 footer {

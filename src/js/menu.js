@@ -1,67 +1,76 @@
-import { createHtmlElements, importAll} from "../index"
+import { createHtmlElements, importAll } from "../index"
 
 //createHtmlElements(type,id,dataset,classes,content)
 const images = importAll(require.context('../images/drinks', false, /\.(png|jpe?g|svg)$/));
-  
-console.log("images keys",images[Object.keys(images)[0]])
-console.log("images values",images[Object.values(images)[0]])
-const drinks={
-    name:"drink01",
-    name:"drink02",
-    name:"drink03"
-}
-var requireContext = require.context("../images/drinks", true, /^\.\/.*\.jpg$/);
-requireContext.keys().map(requireContext);
-console.log('requireContext', requireContext)
+console.log("images keys", images[Object.keys(images)[0]])
+console.log("images values", images[Object.values(images)[0]])
+
+
+
+
+
 
 function createMenu() {
     console.log('menu');
     const pageId = 'menu'
     const $menu = createHtmlElements('div', pageId, null, null, 'la page menu');
-    function createFood(src, text, price, alt) {
+    const $foodGrid = createHtmlElements('div', null, null, 'articles', null);
+    $menu.appendChild($foodGrid);
+    const foods = [
+        {
+            name: 'Coco fever',
+            desc: 'Le best drink with coconut',
+            price: '10$',
+            src: images[Object.keys(images)[0]]
+        },
+        {
+            name: 'Coco Madness',
+            desc: 'Crazy coconut drink with banana and tabasco!',
+            price: '20$',
+            src: images[Object.keys(images)[1]]
+        },
+    ]
+ 
+    function createFood({ name, desc, price, src }) {
         const food = document.createElement('article');
         food.classList.add('food');
         const img = document.createElement('img');
         img.setAttribute('src', src);
-        img.setAttribute('alt', alt);
+        img.setAttribute('alt', name);
 
         const description = document.createElement('div');
         description.classList.add('description');
         const foodName = document.createElement('h3');
-        foodName.textContent = text;
-        console.log('foodName', foodName)
+        foodName.textContent = name;
+        const foodText = document.createElement('p');
+        foodText.textContent = desc;
+
         const foodPrice = document.createElement('h4');
+        foodPrice.classList.add('price')
         foodPrice.textContent = price;
 
-        description.appendChild(foodName)
-        description.appendChild(foodPrice)
-        console.log('description', description)
 
+        description.appendChild(foodText)
+
+        console.log('description', description)
+        food.appendChild(foodName);
+        food.appendChild(foodPrice);
         food.appendChild(img)
         food.appendChild(description)
         return food
     }
-    const foods = [
-        createFood(
-            images[Object.keys(images)[0]],
-            'acbar ice Cream',
-            '10CR',
-            'acbar ice cream'
-        ),
-        createFood(
-            images[Object.keys(images)[1]],
-            'acbar ice Cream',
-            '10CR',
-            'acbar ice cream'
-        ),
-    ]
+
+
     foods.forEach((food) => {
-        $menu.appendChild(food);
+
+        const foodHTML = createFood(food);
+
+        $foodGrid.appendChild(foodHTML);
     })
     return $menu;
 
 }
-function render(){
+function render() {
     const main = document.getElementById("main");
     main.textContent = "";
     main.appendChild(createMenu());
