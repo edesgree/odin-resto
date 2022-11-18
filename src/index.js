@@ -4,6 +4,7 @@ import { renderFooter } from "./js/footer";
 import { renderPageHome } from "./js/home";
 import { renderPageMenu } from "./js/menu";
 import { renderPageContact } from "./js/contact";
+import Logo from './images/logo.svg';
 
 
 
@@ -14,15 +15,15 @@ function createMain() {
 }
 function setActiveButton(button) {
     const buttons = document.querySelectorAll(".tab");
-  
+
     buttons.forEach((button) => {
-      if (button !== this) {
-        button.classList.remove("active");
-      }
+        if (button !== this) {
+            button.classList.remove("active");
+        }
     });
-  
+
     button.classList.add("active");
-  }
+}
 function initWebsite() {
     const $content = document.getElementById('content1');
 
@@ -48,6 +49,18 @@ function createHtmlElements(type, id, dataset, classes, content) {
 
 
 initWebsite();
+var requireContext = require.context("./images/drinks", true, /^\.\/.*\.jpg$/);
+requireContext.keys().map(requireContext);
+console.log('requireContext', requireContext)
+
+// import images from a folder
+function importAll(r) {
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
+  }
+  
+
 
 const tabs = document.querySelectorAll('.tab');
 tabs.forEach(tab => {
@@ -59,15 +72,15 @@ tabs.forEach(tab => {
         setActiveButton(tabBtn);
         switch (target) {
             case "home":
-                
+
                 renderPageHome();
                 break;
             case "menu":
-                
+
                 renderPageMenu();
                 break;
             case "contact":
-                
+
                 renderPageContact();
                 break;
             default:
@@ -76,5 +89,4 @@ tabs.forEach(tab => {
     })
 });
 
-
-export { createHtmlElements }
+export { createHtmlElements, importAll }

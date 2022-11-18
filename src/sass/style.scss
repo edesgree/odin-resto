@@ -103,14 +103,17 @@ header {
         }
     }
 }
-main#home {
+#home {
     flex: 1;
     .hero {
         display: flex;
         font-size: 1.5em;
         gap: 20px;
+        margin-bottom: 30px;
         img {
             align-self: start;
+            max-width: 100%;
+            width: 300px;
         }
     }
 }
@@ -125,7 +128,7 @@ main#home {
     }
 }
 // menu
-main#menu {
+#menu {
     .articles {
         display: grid;
         gap: 30px;
