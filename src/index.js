@@ -1,5 +1,5 @@
 import './sass/style.scss';
-import { renderNav } from "./js/navbar";
+import { renderHeader } from "./js/header";
 import { renderFooter } from "./js/footer";
 import { renderPageHome } from "./js/home";
 import { renderPageMenu } from "./js/menu";
@@ -26,7 +26,7 @@ function setActiveButton(button) {
 function initWebsite() {
     const $content = document.getElementById('content1');
 
-    $content.appendChild(renderNav());
+    $content.appendChild(renderHeader());
     $content.appendChild(createMain());
     $content.appendChild(renderFooter());
 
@@ -54,19 +54,20 @@ tabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
         const tabBtn = e.target;
         const target = tabBtn.dataset.link;
-    
+        // if already on page we do nothing
+        if (tabBtn.classList.contains("active")) return;
+        setActiveButton(tabBtn);
         switch (target) {
             case "home":
-                if (tabBtn.classList.contains("active")) return;
-                setActiveButton(tabBtn);
+                
                 renderPageHome();
                 break;
             case "menu":
-                setActiveButton(tabBtn);
+                
                 renderPageMenu();
                 break;
             case "contact":
-                setActiveButton(tabBtn);
+                
                 renderPageContact();
                 break;
             default:

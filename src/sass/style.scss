@@ -92,6 +92,15 @@ header {
         align-items: center;
         display: flex;
         gap: 10px;
+        .tab{
+            &:hover{
+                color:$bright2;
+                cursor:pointer;
+            }
+            &.active{
+                text-decoration: underline;
+            }
+        }
     }
 }
 main#home {
