@@ -1,5 +1,5 @@
-/*PROJECT CSS*/
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+/*Odin Resto CSS*/
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lato:wght@400;700&display=swap');
 //VARS
 $containerWidth: min(100% - 2rem, 60rem);
 $assetsPath: "../images/";
@@ -13,15 +13,17 @@ $dark: #323031;
 $greydark: #0c1e24;
 $greylight: #e2e8f0;
 $greylight2: #eff2f7;
-$font: "Open Sans", sans-serif;
-$border-radius: 5px;
+$font-text: 'Lato', sans-serif;;
+$font-logo: 'Berkshire Swash', cursive;
+$border-radius: 6px;
+@debug $font-logo;
 body {
     align-items: center;
-    background-color: $bright;
+    background-color: $light;
     color: $dark;
     display: flex;
     flex-direction: column;
-    font-family: $font;
+    font-family: $font-text;
 }
 
 *,
@@ -59,14 +61,73 @@ h5,
 h6 {
     font-weight: bold;
 }
+ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 740px;
+}
+//nav
+header {
+    background-color: $bright;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    .logo {
+        background: url('#{$assetsPath}logo.svg') no-repeat center left;
+        color:orange;
+        font-family:$font-logo;
+        font-size:2em;
+        padding-left: 50px
+        
+    }
+    .tabs {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+    }
+}
+main {
+    flex: 1;
+    .hero {
+        display: flex;
+        font-size: 1.5em;
+        gap: 20px;
+        img{
+            align-self: start;
+        }
+    }
+    .column-2-3 {
+        display: flex;
+        gap: 20px;
+        & > div:first-of-type {
+            flex: 1;
+        }
+        & > div:last-child {
+            flex: 2;
+        }
+    }
+}
+
+footer {
+    border-top: solid 2px $bright;
+    padding-top: 20px;
+    text-align: center;
+}
+
+// media queries
 @media only screen and (max-width: 700px) {
-   
 }
 @media only screen and (max-width: 500px) {
-    
 }
 @media only screen and (max-width: 400px) {
-   
 }
 @media only screen and (min-width: 960px) {
 }
