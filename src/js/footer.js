@@ -1,12 +1,10 @@
-import {createHtmlElements, $content} from "../index"
+import {createHtmlElements} from "../index"
 //createHtmlElements(type,id,dataset,classes,content)
 function render(){
     console.log('footer');
-    const $main = createHtmlElements('footer','footer',null,null,'le footer');
+    const $footer = createHtmlElements('footer','footer',null,null,'le footer');
 
-    
-    
-    $content.appendChild($main);
+    return $footer
     
     
 }

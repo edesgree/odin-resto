@@ -1,15 +1,17 @@
-import {createHtmlElements, $content} from "../index"
+import {createHtmlElements} from "../index"
 //createHtmlElements(type,id,dataset,classes,content)
-function render(){
+function createContact(){
     console.log('contact');
     const pageId = 'contact'
-    const $main = createHtmlElements('main',pageId,null,null,'la page contact');
+    const $contact = createHtmlElements('div',pageId,null,null,'la page contact');
 
-    
-    
-    $content.appendChild($main);
+    return $contact;
     
     
 }
-
+function render(){
+    const main = document.getElementById("main");
+    main.textContent = "";
+    main.appendChild(createContact());
+}
 export {render as renderPageContact}
