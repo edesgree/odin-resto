@@ -12,7 +12,17 @@ function createMain() {
     $main.setAttribute("id", "main");
     return $main;
 }
-
+function setActiveButton(button) {
+    const buttons = document.querySelectorAll(".tab");
+  
+    buttons.forEach((button) => {
+      if (button !== this) {
+        button.classList.remove("active");
+      }
+    });
+  
+    button.classList.add("active");
+  }
 function initWebsite() {
     const $content = document.getElementById('content1');
 
@@ -21,6 +31,7 @@ function initWebsite() {
     $content.appendChild(renderFooter());
 
     // set active btn
+    setActiveButton(document.querySelector(".tab"));
     renderPageHome();
 }
 function createHtmlElements(type, id, dataset, classes, content) {
@@ -36,49 +47,26 @@ function createHtmlElements(type, id, dataset, classes, content) {
 }
 
 
-// function pageHome() {
-//     const main = document.getElementById("main");
-//     main.textContent = "";
-//     main.appendChild(renderPageHome());
-// }
-// function pageMenu() {
-//     console.log('pageMenu', pageMenu)
-   
-    
-//     renderPageMenu();
-   
-// }
-// function pageContact() {
-//     console.log('pageContact', pageContact)
-    
-    
-//     renderPageContact();
-    
-// }
 initWebsite();
 
-//tabs
-// tabs.forEach(tab => {
-//     tab.addEventListener('click', openTabs)
-// });
 const tabs = document.querySelectorAll('.tab');
 tabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
-        console.log('tab', tab)
-        console.log('click')
-        console.log('e', e);
         const tabBtn = e.target;
         const target = tabBtn.dataset.link;
-        console.log('target', target)
-
+    
         switch (target) {
             case "home":
+                if (tabBtn.classList.contains("active")) return;
+                setActiveButton(tabBtn);
                 renderPageHome();
                 break;
             case "menu":
+                setActiveButton(tabBtn);
                 renderPageMenu();
                 break;
             case "contact":
+                setActiveButton(tabBtn);
                 renderPageContact();
                 break;
             default:
@@ -86,13 +74,6 @@ tabs.forEach(tab => {
         }
     })
 });
-const buttons = document.querySelectorAll('.toto');
-console.log('buttons', buttons)
-buttons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        console.log('button', button)
-        console.log("button toto!")
-    });
-});
+
 
 export { createHtmlElements }
