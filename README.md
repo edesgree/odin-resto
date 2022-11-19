@@ -3,7 +3,7 @@
 The project is to create a small website for a demo restaurant, and using only JS to generate the content. The pages are then generated using Webpack.
 The site was created using HTML, SCSS and Vanilla JS.
 
-🔗 **Live preview:** [here](https://edesgree.github.io/odin-library-app/public/)
+🔗 **Live preview:** [here](https://edesgree.github.io/odin-resto/dist/)
 
 
 ## Built with
