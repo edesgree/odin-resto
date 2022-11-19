@@ -8,14 +8,17 @@ function createHome() {
     // HERO AREA
     const $hero = document.createElement('div');
     $hero.classList.add('hero');
-    const heroText = "Oh! My! God! So good! The decor was unique and incredible. After my meal, I was knocked into a food coma. I would eat here every day if I could afford it!";
+    const heroText = "The decor was unique and incredible. After my meal, I was knocked into a food coma. I would eat here every day if I could afford it!";
     const $heroText = document.createElement('div');
     $heroText.classList.add('hero-text');
+    const $heroTitle = createHtmlElements('h2', null, null, null, 'Oh! My! God! So good! ');
+
     $heroText.innerText = heroText;
     const heroImg = new Image();
     heroImg.src = imgHeroHome;
     heroImg.alt = "Resto Coco is the best in town !";
     $hero.appendChild(heroImg);
+    $heroText.prepend($heroTitle);
     $hero.appendChild($heroText);
     $home.appendChild($hero);
 

@@ -1,9 +1,7 @@
 import { createHtmlElements, importAll } from "../index"
+import foods from "./data/food"
 
-//createHtmlElements(type,id,dataset,classes,content)
-const images = importAll(require.context('../images/drinks', false, /\.(png|jpe?g|svg)$/));
-console.log("images keys", images[Object.keys(images)[0]])
-console.log("images values", images[Object.values(images)[0]])
+
 
 
 
@@ -19,27 +17,14 @@ function createMenu() {
 
     const $foodGrid = createHtmlElements('div', null, null, 'articles', null);
     $menu.appendChild($foodGrid);
-    const foods = [
-        {
-            name: 'Coco fever',
-            desc: 'Le best drink with coconut',
-            price: '10$',
-            src: images[Object.keys(images)[0]]
-        },
-        {
-            name: 'Coco Madness',
-            desc: 'Crazy coconut drink with banana and tabasco!',
-            price: '20$',
-            src: images[Object.keys(images)[1]]
-        },
-    ]
- 
+
+
     function createFood({ name, desc, price, src }) {
         const food = document.createElement('article');
         food.classList.add('food');
-        const img = document.createElement('img');
-        img.setAttribute('src', src);
-        img.setAttribute('alt', name);
+        const img = new Image();
+        img.src = src;
+        img.alt = name;
 
         const description = document.createElement('div');
         description.classList.add('description');
