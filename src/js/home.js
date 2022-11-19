@@ -9,18 +9,25 @@ function createHome() {
     const $hero = document.createElement('div');
     $hero.classList.add('hero');
     const heroText = "Are you looking for the most delicious coconut cocktail in the world ? Say no more, you are in for a treat!";
-    const $heroText = document.createElement('div');
-    $heroText.classList.add('hero-text');
+    const $heroContentLeft = document.createElement('div');
+    $heroContentLeft.classList.add('hero-text');
     const $heroTitle = createHtmlElements('h2', null, null, null, 'Oh! My! God! So good!');
-
-    $heroText.innerText = heroText;
+    const $heroText = createHtmlElements('span', null, null, null, heroText);
+    $heroContentLeft.appendChild($heroText);
     const heroImg = new Image();
     heroImg.src = imgHeroHome;
     heroImg.alt = "Resto Coco is the best in town !";
-    $hero.appendChild(heroImg);
-    $heroText.prepend($heroTitle);
-    $hero.appendChild($heroText);
+    $hero.setAttribute('style', `background-image:url('${heroImg.src}')`);
+    $heroContentLeft.prepend($heroTitle);
+    $hero.appendChild($heroContentLeft);
+
+    const $heroContentRight = createHtmlElements('div', null, null, 'hero-content-right', null);
+    const $homeContentBtn = createHtmlElements('a', null, "menu", 'btn', 'See our menu');
+    $heroContentRight.appendChild($homeContentBtn);
+
+    $hero.appendChild($heroContentRight);
     $home.appendChild($hero);
+
 
     return $home;
 }

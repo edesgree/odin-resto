@@ -102,6 +102,20 @@ ul {
         width: $containerWidth;
     }
 }
+//button
+.btn{
+    background-color: $bright;
+    border-radius: $border-radius;
+    color:$green;
+    cursor:pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 20px 30px;
+    &:hover{
+        background-color: darken($bright,10);
+        color:$dark;
+    }
+}
 //nav
 header {
     background: $green;
@@ -170,19 +184,48 @@ header {
         width: 100%;
     }
 }
+
+main{
+    display: flex;
+    flex:1;
+    padding: 0 20px;
+    @include from(sm) {
+        padding: 0;
+    }
+}
 #home {
+display: flex;
     flex: 1;
+height: inherit;
     .hero {
+        align-items: center;
+        background-size: cover;
         display: flex;
         flex-direction: column;
         font-size: 1.5em;
         gap: 20px;
         margin-bottom: 30px;
+        padding: 0 20px;
         @include from(sm) {
             flex-direction: row;
         }
         .hero-text {
+            align-self: start;
+            flex:2;
             padding: 0 20px;
+            span{
+                background-color: $dark;
+                color:white;
+                line-height: 1.555em;
+                padding: 4px 0;
+            }
+        }
+        .hero-content-right{
+            flex:1;
+            .btn{
+                display: inline-block;
+                
+            }
         }
         img {
             align-self: center;

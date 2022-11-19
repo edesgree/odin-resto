@@ -43,7 +43,7 @@ function createHtmlElements(type, id, dataset, classes, content) {
         let arrayClasses = classes.split(' ');
         arrayClasses.forEach((myClass) => element.classList.add(myClass));
     }
-
+    if (dataset) element.setAttribute('data-action',dataset);
     return element
 }
 
@@ -88,5 +88,10 @@ tabs.forEach(tab => {
         }
     })
 });
-
+const btnMenu = document.querySelector('[data-action=menu]');
+btnMenu.addEventListener('click', (e) => {
+    setActiveButton(document.querySelector("[data-link=menu]"))
+    renderPageMenu();
+})
+console.log('btnMenu', btnMenu)
 export { createHtmlElements, importAll }
