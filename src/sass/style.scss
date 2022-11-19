@@ -1,11 +1,29 @@
-@use 'mixins';
 /*Odin Resto CSS*/
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lato:wght@400;700&display=swap");
+// media queries
+$media: (
+    sm: 640px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    2xl: 1536px,
+    3xl: 1920px,
+);
+
+@mixin responsive($breakpoint) {
+    @each $breakpoints, $size in $media {
+        @if $breakpoint==$breakpoints {
+            @media screen and (min-width: $size) {
+                @content;
+            }
+        }
+    }
+}
 
 //VARS
 $containerWidth: min(100% - 2rem, 60rem);
 $assetsPath: "../images/";
-$colortest:red;
+
 $bright: #a9ff77;
 $bright2: #e3871d;
 $main: #227c9d;
@@ -74,7 +92,9 @@ ul {
     flex-direction: column;
     justify-content: space-around;
     margin: 0 auto;
-    max-width: 740px;
+    @include responsive(sm){
+        width: $containerWidth;
+    }
 }
 //nav
 header {
@@ -105,20 +125,18 @@ header {
         }
     }
 }
-@mixin test{
-    color:$colortest;
-}
+
 #home {
     flex: 1;
     .hero {
         display: flex;
+        flex-direction: column;
         font-size: 1.5em;
         gap: 20px;
         margin-bottom: 30px;
-        // @include responsive(md){
-        //     flex-direction: column;
-        // }
-        @include test;
+         @include responsive(sm){
+             flex-direction: row;
+         }
         img {
             align-self: start;
             max-width: 100%;
