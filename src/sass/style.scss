@@ -10,7 +10,7 @@ $media: (
     3xl: 1920px,
 );
 
-@mixin responsive($breakpoint) {
+@mixin from($breakpoint) {
     @each $breakpoints, $size in $media {
         @if $breakpoint==$breakpoints {
             @media screen and (min-width: $size) {
@@ -24,12 +24,15 @@ $media: (
 $containerWidth: min(100% - 2rem, 60rem);
 $assetsPath: "../images/";
 
-$bright: #a9ff77;
+$bright: #dce83f;
 $bright2: #e3871d;
+$potiron: #fdb03c;
+$green: #146f44;
 $main: #227c9d;
 $main2: #ff433f;
 $light: #fef9ef;
 $dark: #323031;
+$brown: #986747;
 $greydark: #0c1e24;
 $greylight: #e2e8f0;
 $greylight2: #eff2f7;
@@ -37,13 +40,10 @@ $font-text: "Lato", sans-serif;
 $font-logo: "Berkshire Swash", cursive;
 $border-radius: 6px;
 @debug $font-logo;
-html,
-body {
-    height: 100%;
-}
+
 body {
     align-items: center;
-    background-color: $light;
+    background-color: $potiron;
     color: $dark;
     display: flex;
     flex-direction: column;
@@ -96,43 +96,80 @@ ul {
 .container {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    justify-content: space-around;
     margin: 0 auto;
-    @include responsive(sm) {
+    min-height: 100vh;
+    @include from(sm) {
         width: $containerWidth;
     }
 }
 //nav
 header {
-    background-color: $bright;
+    background: $green;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    //background: linear-gradient(0deg, rgba(220,232,63,1) 0%, rgba(253,187,45,1) 100%);
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
     padding: 10px;
     .logo {
         background: url("#{$assetsPath}logo.svg") no-repeat center left;
-        color: orange;
+        color: white;
         font-family: $font-logo;
         font-size: 2em;
         padding-left: 50px;
     }
     .tabs {
         align-items: center;
+
         display: flex;
         gap: 10px;
         .tab {
+            color: white;
+            font-size: 1.2em;
+            overflow: hidden;
+            padding-bottom: 5px;
+            position: relative;
+            &:first-letter {
+                text-transform: uppercase;
+            }
+            &.active,&:hover{
+                color: $bright;
+            }
             &:hover {
-                color: $bright2;
                 cursor: pointer;
             }
-            &.active {
-                text-decoration: underline;
+            &::after {
+                background: $bright;
+                border-radius: 5px;
+                bottom: 0px;
+                content: "";
+                display: block;
+                height: 3px;
+                position: absolute;
+                right: 0;
+                transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+                width: 0;
+            }
+            
+            &:hover:after,
+            &:focus:after,
+            &:active:after {
+                left: 0;
+                right: auto;
+                width: 100%;
             }
         }
     }
 }
-
+@keyframes anim {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
 #home {
     flex: 1;
     .hero {
@@ -141,8 +178,11 @@ header {
         font-size: 1.5em;
         gap: 20px;
         margin-bottom: 30px;
-        @include responsive(sm) {
+        @include from(sm) {
             flex-direction: row;
+        }
+        .hero-text {
+            padding: 0 20px;
         }
         img {
             align-self: center;
@@ -162,6 +202,7 @@ header {
         display: grid;
         gap: 30px;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        margin-bottom: 50px;
         article {
             background-color: $greylight2;
             border-left: solid 5px $bright;
@@ -216,8 +257,12 @@ header {
     }
 }
 footer {
-    border-top: solid 2px $bright;
-    margin-top: 50px;
+    background-color: $green;
+    border-top: solid 6px $bright;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    color: white;
+    margin-top: auto;
     padding: 20px;
     text-align: center;
 }
