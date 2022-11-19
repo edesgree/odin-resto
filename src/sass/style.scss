@@ -37,6 +37,10 @@ $font-text: "Lato", sans-serif;
 $font-logo: "Berkshire Swash", cursive;
 $border-radius: 6px;
 @debug $font-logo;
+html,
+body {
+    height: 100%;
+}
 body {
     align-items: center;
     background-color: $light;
@@ -44,6 +48,8 @@ body {
     display: flex;
     flex-direction: column;
     font-family: $font-text;
+    margin: 0;
+    padding: 0;
 }
 
 *,
@@ -90,9 +96,10 @@ ul {
 .container {
     display: flex;
     flex-direction: column;
+    height: 100%;
     justify-content: space-around;
     margin: 0 auto;
-    @include responsive(sm){
+    @include responsive(sm) {
         width: $containerWidth;
     }
 }
@@ -134,11 +141,11 @@ header {
         font-size: 1.5em;
         gap: 20px;
         margin-bottom: 30px;
-         @include responsive(sm){
-             flex-direction: row;
-         }
+        @include responsive(sm) {
+            flex-direction: row;
+        }
         img {
-            align-self: start;
+            align-self: center;
             max-width: 100%;
             width: 300px;
         }
@@ -194,14 +201,14 @@ header {
 }
 
 // contact
-#contact{
-    .socials-list{
+#contact {
+    .socials-list {
         display: flex;
-        gap:5px;
-        
-        li{
-            a{
-                img{
+        gap: 5px;
+
+        li {
+            a {
+                img {
                     width: 30px;
                 }
             }
@@ -210,10 +217,10 @@ header {
 }
 footer {
     border-top: solid 2px $bright;
-    padding-top: 20px;
+    margin-top: 50px;
+    padding: 20px;
     text-align: center;
 }
-
 
 .map-responsive {
     height: 0;
