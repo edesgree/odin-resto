@@ -13,7 +13,10 @@ console.log("images values", images[Object.values(images)[0]])
 function createMenu() {
     console.log('menu');
     const pageId = 'menu'
-    const $menu = createHtmlElements('div', pageId, null, null, 'la page menu');
+    const $menu = createHtmlElements('div', pageId, null, null, null);
+    const $pageTitle = createHtmlElements('h1', null, null, null, 'Our delicious drinks');
+    $menu.appendChild($pageTitle);
+
     const $foodGrid = createHtmlElements('div', null, null, 'articles', null);
     $menu.appendChild($foodGrid);
     const foods = [
