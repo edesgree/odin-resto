@@ -1,6 +1,7 @@
-import { createHtmlElements } from "../index"
+import { createHtmlElements,setActiveButton} from "../index"
+import { renderPageMenu } from "./menu";
 import imgHeroHome from '../images/hero-coco.webp';
-
+// create HTML for this section
 function createHome() {
     const pageId = 'home';
     const $home = createHtmlElements('div', pageId, null, null, null);
@@ -22,12 +23,11 @@ function createHome() {
     $hero.appendChild($heroContentLeft);
 
     const $heroContentRight = createHtmlElements('div', null, null, 'hero-content-right', null);
-    const $homeContentBtn = createHtmlElements('a', null, "menu", 'btn', 'See our menu');
-    $heroContentRight.appendChild($homeContentBtn);
+    const $btnMenu = createHtmlElements('a', null, "menu", 'btn', 'See our menu');
+    $heroContentRight.appendChild($btnMenu);
 
     $hero.appendChild($heroContentRight);
     $home.appendChild($hero);
-
 
     return $home;
 }
@@ -35,5 +35,13 @@ function render() {
     const main = document.getElementById("main");
     main.textContent = "";
     main.appendChild(createHome());
+
+    // other button to go to menu page
+const $btnMenu = document.querySelector('[data-action=menu]');
+$btnMenu.addEventListener('click', (e) => {
+    console.log('click menu');
+    setActiveButton(document.querySelector("[data-link=menu]"))
+    renderPageMenu();
+})
 }
 export { render as renderPageHome }

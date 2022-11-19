@@ -1,15 +1,8 @@
 import { createHtmlElements, importAll } from "../index"
 import foods from "./data/food"
 
-
-
-
-
-
-
-
+// create HTML for this section
 function createMenu() {
-    console.log('menu');
     const pageId = 'menu'
     const $menu = createHtmlElements('div', pageId, null, null, null);
     const $pageTitle = createHtmlElements('h1', null, null, null, 'Our delicious drinks');
@@ -18,7 +11,7 @@ function createMenu() {
     const $foodGrid = createHtmlElements('div', null, null, 'articles', null);
     $menu.appendChild($foodGrid);
 
-
+    // create a food item card
     function createFood({ name, desc, price, src }) {
         const food = document.createElement('article');
         food.classList.add('food');
@@ -37,10 +30,8 @@ function createMenu() {
         foodPrice.classList.add('price')
         foodPrice.textContent = price;
 
-
         description.appendChild(foodText)
 
-        console.log('description', description)
         food.appendChild(foodName);
         food.appendChild(foodPrice);
         food.appendChild(img)
@@ -48,11 +39,8 @@ function createMenu() {
         return food
     }
 
-
     foods.forEach((food) => {
-
         const foodHTML = createFood(food);
-
         $foodGrid.appendChild(foodHTML);
     })
     return $menu;

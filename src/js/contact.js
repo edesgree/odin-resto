@@ -1,11 +1,12 @@
 import { createHtmlElements, importAll } from "../index"
-//createHtmlElements(type,id,dataset,classes,content)
+
+// create HTML for this section
 function createContact() {
-    console.log('contact');
     const pageId = 'contact'
     const $contact = createHtmlElements('div', pageId, null, null, null);
     const $pageTitle = createHtmlElements('h1', null, null, null, 'Contact Us');
     $contact.appendChild($pageTitle);
+
     // GOOGLE MAP AREA
     const $gmap = document.createElement('div');
     $gmap.classList.add('gmap');
@@ -21,10 +22,6 @@ function createContact() {
     const $contactInfo = document.createElement('div');
     $contactInfo.classList.add('column-1-3')
 
-
-
-
-
     //HOURS
     const $hours = document.createElement('div');
     $hours.classList.add('box-hours')
@@ -38,8 +35,8 @@ function createContact() {
         'Friday: 6am - 10pm',
         'Saturday: 8am - 10pm',
     ]
-    console.log('hoursData', hoursData[0])
-    console.log('hoursData', hoursData[Object.keys(hoursData)[0]])
+
+    // create html list from array
     function createList(list) {
         const $list = document.createElement('ul')
         for (let i = 0; i < list.length; i++) {
@@ -50,10 +47,9 @@ function createContact() {
         return $list
     }
     const $hoursList = createList(hoursData);
-    console.log('$hoursList', $hoursList)
+
     $hours.appendChild($hoursTitle)
     $hours.appendChild($hoursList)
-    console.log('$hours', $hours)
 
     //LOCATION AND PHONES
     const $info = document.createElement('div');
@@ -66,16 +62,15 @@ function createContact() {
     $info.appendChild($locationText);
     $info.appendChild($phonesTitle);
     $info.appendChild($phonesText);
-    console.log('$info', $info)
+    
     // SOCIALS
     const $socials = document.createElement('div');
     $socials.classList.add('socials')
     const $socialsTitle = createHtmlElements('h2', null, null, null, 'Follow Us');
 
     const iconsSocials = importAll(require.context('../images/socials', false, /\.(png|jpe?g|svg)$/));
-    console.log("iconsSocials keys", iconsSocials)
-    console.log("iconsSocials keys0", iconsSocials[Object.keys(iconsSocials)[0]])
-    //console.log("iconsSocials keys1", Object.keys(iconsSocials)[0])
+    
+    // array of info on socials
     const socials = [
         {
             name: 'Facebook',
@@ -98,7 +93,7 @@ function createContact() {
             iconPath: iconsSocials[Object.keys(iconsSocials)[3]]
         }
     ];
-    console.log('socials', socials[0].name)
+
     function createSocialNav(list) {
         const $list = document.createElement('ul');
         $list.classList.add('socials-list')
@@ -115,13 +110,13 @@ function createContact() {
         socialLink.setAttribute('href', link);
         const socialImg = document.createElement('img');
         socialImg.setAttribute('src', iconPath);
-        console.log('iconPath', iconPath)
+        
         socialImg.setAttribute('alt', name);
         socialLink.appendChild(socialImg);
         return socialLink
     }
     const $socialList = createSocialNav(socials)
-    console.log('$socialList', $socialList)
+
     $socials.appendChild($socialsTitle)
     $socials.appendChild($socialList)
 
@@ -131,7 +126,6 @@ function createContact() {
 
     $contact.appendChild($gmap)
     $contact.appendChild($contactInfo)
-    console.log('$contactInfo', $contactInfo)
 
     return $contact;
 }

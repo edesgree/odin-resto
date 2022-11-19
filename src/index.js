@@ -6,8 +6,6 @@ import { renderPageMenu } from "./js/menu";
 import { renderPageContact } from "./js/contact";
 import Logo from './images/logo.svg';
 
-
-
 function createMain() {
     const $main = document.createElement('main');
     $main.setAttribute("id", "main");
@@ -35,6 +33,7 @@ function initWebsite() {
     setActiveButton(document.querySelector(".tab"));
     renderPageHome();
 }
+// helper to create html elements
 function createHtmlElements(type, id, dataset, classes, content) {
     const element = document.createElement(type);
     if (id) element.id = id;
@@ -47,11 +46,7 @@ function createHtmlElements(type, id, dataset, classes, content) {
     return element
 }
 
-
 initWebsite();
-var requireContext = require.context("./images/drinks", true, /^\.\/.*\.jpg$/);
-requireContext.keys().map(requireContext);
-console.log('requireContext', requireContext)
 
 // import images from a folder
 function importAll(r) {
@@ -60,8 +55,7 @@ function importAll(r) {
     return images;
 }
 
-
-
+// NAVIGATION
 const tabs = document.querySelectorAll('.tab');
 tabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
@@ -72,15 +66,12 @@ tabs.forEach(tab => {
         setActiveButton(tabBtn);
         switch (target) {
             case "home":
-
                 renderPageHome();
                 break;
             case "menu":
-
                 renderPageMenu();
                 break;
             case "contact":
-
                 renderPageContact();
                 break;
             default:
@@ -88,10 +79,6 @@ tabs.forEach(tab => {
         }
     })
 });
-const btnMenu = document.querySelector('[data-action=menu]');
-btnMenu.addEventListener('click', (e) => {
-    setActiveButton(document.querySelector("[data-link=menu]"))
-    renderPageMenu();
-})
-console.log('btnMenu', btnMenu)
-export { createHtmlElements, importAll }
+
+
+export { createHtmlElements, importAll,setActiveButton }

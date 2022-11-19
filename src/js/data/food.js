@@ -2,7 +2,7 @@ import {importAll } from "../../index"
 // import images
 const images = importAll(require.context('../../images/drinks', false, /\.(png|jpe?g|svg)$/));
 
-
+// array containing the data
 const foods = [
     {
         name: 'Coco Fever',
@@ -18,13 +18,13 @@ const foods = [
     },
     {
         name: 'Coco Passion',
-        desc: `For the passion love, this is a sweet and fruity drink`,
+        desc: `For the passion love, this is a sweet and fruity drink.`,
         price: '15$',
         src: images[Object.keys(images)[2]]
     },
     {
         name: 'Coco Rico',
-        desc: `When you need some cofee, but also wants some banana juice with it`,
+        desc: `When you need some cofee, but also wants some banana juice with it.`,
         price: '16$',
         src: images[Object.keys(images)[3]]
     },
@@ -42,7 +42,7 @@ const foods = [
     },
     {
         name: 'Coco strawberry frenzy',
-        desc: `For the strawberry lovers, the coco juice you will love`,
+        desc: `For the strawberry lovers, the coco juice you will love.`,
         price: '13$',
         src: images[Object.keys(images)[6]]
     },
@@ -55,7 +55,7 @@ const foods = [
     {
         name: 'Coco la vista',
         desc: `The best coconut drink ever, just coconut with tequila!`,
-        price: '$',
+        price: '9$',
         src: images[Object.keys(images)[8]]
     }
 ]
