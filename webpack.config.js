@@ -33,7 +33,14 @@ module.exports = {
                     "css-loader",
 
                     // Compiles Sass to CSS
-                    "sass-loader",
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sassOptions: {
+                                includePaths: [path.resolve(__dirname, './sass')]
+                            }
+                        },
+                    },
                 ],
             },
             {

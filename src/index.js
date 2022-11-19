@@ -25,8 +25,8 @@ function setActiveButton(button) {
     button.classList.add("active");
 }
 function initWebsite() {
-    const $content = document.getElementById('content1');
-
+    const $content = document.getElementById('content');
+    $content.innerHTML = "";
     $content.appendChild(renderHeader());
     $content.appendChild(createMain());
     $content.appendChild(renderFooter());
@@ -58,8 +58,8 @@ function importAll(r) {
     let images = {};
     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
     return images;
-  }
-  
+}
+
 
 
 const tabs = document.querySelectorAll('.tab');

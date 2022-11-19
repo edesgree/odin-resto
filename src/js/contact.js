@@ -134,8 +134,6 @@ function createContact() {
     console.log('$contactInfo', $contactInfo)
 
     return $contact;
-
-
 }
 function render() {
     const main = document.getElementById("main");
